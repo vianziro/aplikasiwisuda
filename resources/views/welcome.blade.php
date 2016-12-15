@@ -7,8 +7,7 @@
 
         <title>Laravel</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+
 
         <!-- Styles -->
         <style>
@@ -78,7 +77,9 @@
                   Implementasi Aplikasi Wisuda
 
                   <div id="container">
-                        <input type="text" name="text">
+
+                        <input type="text" name="text" >
+
                         <button id="gspeech" class="say">Say It</button>
                         <audio id="player1" src="" class="speech" hidden></audio>
                   </div>
@@ -86,7 +87,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
+                    <a href="https://laravel.com/docs" >Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://forge.laravel.com">Forge</a>
@@ -94,20 +95,14 @@
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" ></script>
+        <script type="text/javascript" src="js/jquery.min.js" ></script>
         <script type="text/javascript" src="js/responsivevoice.js"></script>
         <script>
         $(document).ready(function(){
-
-
           $('#gspeech').on('click', function(){
-
           var text = $('input[name="text"]').val();
           responsiveVoice.speak("" + text +"","Indonesian Female");
-
-          });
-
-
+            });
           });
         </script>
     </body>
