@@ -78,14 +78,17 @@
 
                   <div id="container">
 
-                        <input type="text" name="text" >
+                        <input type="text" name="text" id="namawisudawan" >
 
                         <button id="gspeech" class="say">Say It</button>
                         <audio id="player1" src="" class="speech" hidden></audio>
                   </div>
 
                 </div>
-
+                <form method="get" action="ambildatawisuda" id="formdatawisuda">
+                    <input type="text" name="no" id="next" value="{{$data->no}}">
+              <button type="submit" >Next </button>
+              </form>
                 <div class="links">
                     <a href="https://laravel.com/docs" >Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>
@@ -98,11 +101,46 @@
         <script type="text/javascript" src="js/jquery.min.js" ></script>
         <script type="text/javascript" src="js/responsivevoice.js"></script>
         <script>
+        $('#formdatawisuda').on('submit',function(e){
+          e.preventDefault();
+
+       $.ajax({
+         type: $(this).attr('method'),
+         url: $(this).attr('action'),
+         data: $('#formdatawisuda').serialize(),
+
+         success:function(data){
+           var nomor = "Nomor ";
+           var spasi = " ";
+           var  nama = data.nama;
+           var  no = data.no;
+           var judul = data.judul;
+           var namano = nomor+no+spasi+nama+spasi+judul;
+           if (data.nama == null){
+             $('#namawisudawan').val('Terima Kasih Andrea Christian dan Bagus Jati Kuncoro');
+           }else {
+                $('#namawisudawan').val(namano);
+           }
+
+           $('#next').val(data.no);
+           var text = $('input[name="text"]').val();
+           responsiveVoice.speak("" + text +"","Indonesian Female");
+           console.log(data);
+         },error:function(data){
+
+         }
+       });
+   });
+
+        </script>
+
+
+        <script>
         $(document).ready(function(){
           $('#gspeech').on('click', function(){
           var text = $('input[name="text"]').val();
           responsiveVoice.speak("" + text +"","Indonesian Female");
-            });
+          });
           });
         </script>
     </body>

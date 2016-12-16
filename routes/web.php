@@ -12,3 +12,4 @@
 */
 
 route::get('/','WisudaController@wisuda');
+route::get('/ambildatawisuda','WisudaController@ambil_data_wisuda');
