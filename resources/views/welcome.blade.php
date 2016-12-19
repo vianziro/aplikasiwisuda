@@ -11,60 +11,46 @@
 
         <!-- Styles -->
         <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
+            #header{
+                height: 300px;
+                width: auto; 
+                background-color:#151c4b; 
                 position: relative;
             }
+            .nama{
+                font-family: raleway; 
+                color: white; 
+                position: absolute; 
+                left: 120px; 
+                top: 230px;
+                font-size: 50px;
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
             }
-
-            .content {
+            .judul{
+                position: relative;
+                font-family: AmarilloUSAF;
                 text-align: center;
+                font-size: 40px;
+                color: white;
+                top: 10px;
+            }
+            .foto{
+                position: absolute;
+                right: 200px;
+                top: 200px;
+            }
+            .data{
+                position: absolute;
+                font-family: raleway;
+                color: #2c2d33;
+                left: 90px;
+                font-size:22px;
             }
 
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+  <!--       <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     <a href="{{ url('/login') }}">Login</a>
@@ -95,6 +81,39 @@
                 </div>
             </div>
         </div>
+ -->
+
+
+        <!-- <p style="border: solid 0px #eceff5; background: #29447E; padding: 10px; margin: 0; text-align: justify; line-height: 23px; color: white; font-size: 18px"></p> -->
+
+        <div id="header">
+            <div class="judul">
+                <img src="images/untan.png" width="90px;"></br>
+                Wisudawan Universitas Tanjungpura Periode 2016/2017
+            </div>
+            <div class="foto">
+                <img src="images/IdFC_gal_13092013_114803.jpg" width="300" height="auto">
+                <button>next</button>
+            </div>
+            <div class="nama">
+                <b>Bagus Jati Kuncoro</b>
+            </div>
+        </div>
+        <div id="content">
+            <div class="data">
+                <ul>
+                    <li>H1051131061</li><br>
+                    <li>Fakultas Ilmu Komputer</li></br>
+                    <li>Prodi Sistem Komputer</li></br>
+                    <li>Angkatan 2013</li>
+                    <li>judul : <i>asfasfwsfdfgfdsgdfgsfgsdgesgfsd</i></li>
+                </ul>
+                <strong style="left:40px;font-size: 50px;position: absolute; ">IPK : 4.00 </strong>           
+            </div>
+            <pre>cumlaud</pre>
+        </div>
+
+
         <script type="text/javascript" src="js/jquery.min.js" ></script>
         <script type="text/javascript" src="js/responsivevoice.js"></script>
         <script>
