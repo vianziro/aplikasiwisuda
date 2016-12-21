@@ -15,24 +15,24 @@
                 height: 240px;
                 width: 100%;
                 padding: 0 auto;
-                background:url(../images/Modern-Wallpaper-3BD.jpg); 
+                background:url(../images/Modern-Wallpaper-3BD.jpg);
                 position: relative;
                 background-position: center;
             }
             .nama{
-                font-family: raleway; 
-                color: white; 
-                position: absolute; 
-                left: 120px; 
+                font-family: raleway;
+                color: white;
+                position: absolute;
+                left: 120px;
                 top: 190px;
                 font-size: 35px;
 
             }
             .nim{
-                font-family: raleway; 
-                color: white; 
-                position: absolute; 
-                right: 170px; 
+                font-family: raleway;
+                color: white;
+                position: absolute;
+                right: 170px;
                 top: 190px;
                 font-size: 35px;
             }
@@ -148,11 +148,18 @@
 
             }
         </style>
-        <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css"> 
-        <link rel="stylesheet" type="text/css" href="../js/Semantic-UI-CSS-master/semantic.css"> 
+        <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="../js/Semantic-UI-CSS-master/semantic.css">
         <script src="../js/Semantic-UI-CSS-master/semantic.js"></script>
     </head>
     <body>
+      <div id="container">
+
+            <input type="text" name="text" id="namawisudawan" >
+
+            <button id="gspeech" class="say">Say It</button>
+            <audio id="player1" src="" class="speech" hidden></audio>
+      </div>
   <!--       <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -165,13 +172,7 @@
                 <div class="title m-b-md">
                   Implementasi Aplikasi Wisuda
 
-                  <div id="container">
 
-                        <input type="text" name="text" id="namawisudawan" >
-
-                        <button id="gspeech" class="say">Say It</button>
-                        <audio id="player1" src="" class="speech" hidden></audio>
-                  </div>
 
                 </div>
                 <form method="get" action="ambildatawisuda" id="formdatawisuda">
@@ -203,9 +204,9 @@
                     <img  src="images/IdFC_gal_13092013_114803.jpg">
             </div>
         </div>
-        
+
             <div class="menu"></div>
-            
+
         <div id="tengah">
             <div class ="icon fakultas">
                 <img  src="images/fakultas.png">
@@ -221,7 +222,7 @@
                 <img  src="images/skripsi.png">
         </div>
         <div id="content">
-        
+
             <div class="nama">
                 Bagus Jati Kuncoro
             </div>
@@ -254,9 +255,9 @@
                     <li>Angkatan 2013</li>
                     <li>judul : <i>asfasfwsfdfgfdsgdfgsfgsdgesgfsd</i></li>
                 </ul>
-                <strong style="left:40px;font-size: 50px;position: absolute; ">IPK : 4.00 </strong>   <pre>cumlaud</pre>        
+                <strong style="left:40px;font-size: 50px;position: absolute; ">IPK : 4.00 </strong>   <pre>cumlaud</pre>
             </div> -->
-            
+
         </div>
 
 
