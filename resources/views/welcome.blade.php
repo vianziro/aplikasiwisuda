@@ -157,9 +157,10 @@
 
             <input type="text" name="text" id="namawisudawan" >
 
-            <button id="gspeech" class="say">Say It</button>
+            <button id="gspeech" class="say"  >Say It</button>
             <audio id="player1" src="" class="speech" hidden></audio>
       </div>
+
   <!--       <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -175,10 +176,7 @@
 
 
                 </div>
-                <form method="get" action="ambildatawisuda" id="formdatawisuda">
-                    <input type="text" name="no" id="next" value="{{$data->no}}">
-              <button type="submit" >Next </button>
-              </form>
+
                 <div class="links">
                     <a href="https://laravel.com/docs" >Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>
@@ -223,30 +221,30 @@
         </div>
         <div id="content">
 
-            <div class="nama">
-                Bagus Jati Kuncoro
+            <div class="nama" id="nama">
+
             </div>
-            <div class="nim">
-                H1051131061
+            <div class="nim" id="nim">
+
             </div>
             <div class="ui big label">
                Cumlaude
             </div>
             <div style="width: 340px;height: auto; position: absolute; left: 55px; top: 293px;" class="ui teal inverted piled raised segment">
               <h5 class="ui header">Fakultas</h5>
-              <p style="font-size: 16px">Matematika dan <b>Ilmu Pengetahuan Alam</b></p>
+              <p style="font-size: 16px" id="fakultas"></b></p>
             </div>
             <div style="width: 280px;height: auto; position: absolute; left: 115px; top: 420px;" class="ui green inverted piled raised segment">
               <h5 class="ui header">Prodi dan Angkatan</h5>
-              <p style="font-size: 16px">Sistem Komputer <b>2013</b></p>
+              <p style="font-size: 16px" id="prodi"></p>
             </div>
             <div style="width: 200px;height: 75px; position: absolute; left: 193px; top: 547px;" class="ui blue inverted piled raised segment">
               <h4 class="ui header">IPK</h4>
-              <p style="font-size: 20px">7. <b>86</b></p>
+              <p style="font-size: 20px" id="ipk"></p>
             </div>
             <div style="width: 600px;height: auto; position: absolute; right: 50px; top: 380px;" class="ui red tetriary piled raised segment">
               <h3 class="ui header">Skripsi</h3>
-              <p style="font-size: 16px">"Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at. Usu ocurreret referrentur at, cu epicurei appellantur vix. Cum ea laoreet recteque electram, eos choro alterum definiebas in. Vim dolorum definiebas an. Mei ex natum rebum iisque."</p>
+              <p style="font-size: 16px" id="judul"></p>
             </div>
             <!-- <div class="data">
                 <ul>
@@ -257,7 +255,10 @@
                 </ul>
                 <strong style="left:40px;font-size: 50px;position: absolute; ">IPK : 4.00 </strong>   <pre>cumlaud</pre>
             </div> -->
-
+            <form method="get" action="ambildatawisuda" id="formdatawisuda">
+                <input type="text" name="no" id="next" style="display:none" value="{{$data->no}}">
+          <button type="submit" >Next </button>
+          </form>
         </div>
 
 
@@ -275,10 +276,11 @@
          success:function(data){
            var nomor = "Nomor ";
            var spasi = " ";
+           var koma = ",";
            var  nama = data.nama;
            var  no = data.no;
            var judul = data.judul;
-           var namano = nomor+no+spasi+nama+spasi+judul;
+           var namano = nomor+no+spasi+nama+spasi+koma+judul;
            if (data.nama == null){
              $('#namawisudawan').val('Terima Kasih Andrea Christian dan Bagus Jati Kuncoro');
            }else {
@@ -286,6 +288,12 @@
            }
 
            $('#next').val(data.no);
+           $('#nama').text(data.nama);
+           $('#nim').text(data.nim);
+           $('#ipk').text(data.ipk);
+           $('#fakultas').text(data.fakultas);
+           $('#prodi').text(data.prodi);
+           $('#judul').text(data.judul);
            var text = $('input[name="text"]').val();
            responsiveVoice.speak("" + text +"","Indonesian Female");
            console.log(data);
