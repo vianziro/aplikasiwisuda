@@ -147,13 +147,36 @@
                 -ms-transition: all ease-in .2s;
 
             }
+            #button{
+                position: absolute;
+                right: 55px;
+                top: 600px;
+
+            }
+            p {
+              animation-duration: 3s;
+              animation-name: slidein;
+            }
+
+            @keyframes slidein {
+              from {
+                margin-left: 100%;
+                width: 300%; 
+              }
+
+              to {
+                margin-left: 0%;
+                width: 100%;
+              }
+            }
+
         </style>
-        <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
         <link rel="stylesheet" type="text/css" href="../js/Semantic-UI-CSS-master/semantic.css">
-        <script src="../js/Semantic-UI-CSS-master/semantic.js"></script>
+        <link rel="stylesheet" type="text/css" href="../js/Semantic-UI-CSS-master/components/transition.min.css">
+        
     </head>
     <body>
-      <div id="container">
+      <div style="display: none;" id="container">
 
             <input type="text" name="text" id="namawisudawan" >
 
@@ -193,14 +216,14 @@
 
         <div id="header">
             <div class="judul">
-                <center><img src="images/untan.png" width="70px;"></br></center>
+                <img src="images/untan.png" width="60px;"></br></br>
                 Wisudawan Universitas Tanjungpura Periode 2016/2017
             </div>
         </div>
         <div id="foto">
-            <div class ="bulat">
-                    <img  src="images/IdFC_gal_13092013_114803.jpg">
-            </div>
+            <!-- <div class ="bulat">
+                    <img src="" id="wisuda-pic">
+            </div> -->
         </div>
 
             <div class="menu"></div>
@@ -227,20 +250,26 @@
             <div class="nim" id="nim">
 
             </div>
-            <div class="ui big label">
-               Cumlaude
+            <!-- <a style="position: absolute;top: 300px;right: 50px;" class="ui big red tag label">Cumlaude</a> -->
+            <div style="position: absolute;top: 300px;right: 50px;" class="ui large tag labels">
+              <a class="ui teal label">
+                Lulus
+              </a>
+              <a class="ui red label">
+                Cumlaude
+              </a>
             </div>
             <div style="width: 340px;height: auto; position: absolute; left: 55px; top: 293px;" class="ui teal inverted piled raised segment">
-              <h5 class="ui header">Fakultas</h5>
+              <h4 class="ui header">Fakultas</h4>
               <p style="font-size: 16px" id="fakultas"></b></p>
             </div>
             <div style="width: 280px;height: auto; position: absolute; left: 115px; top: 420px;" class="ui green inverted piled raised segment">
-              <h5 class="ui header">Prodi dan Angkatan</h5>
+              <h4 class="ui header">Prodi dan Angkatan</h4>
               <p style="font-size: 16px" id="prodi"></p>
             </div>
-            <div style="width: 200px;height: 75px; position: absolute; left: 193px; top: 547px;" class="ui blue inverted piled raised segment">
+            <div style="width: 200px;height: auto; position: absolute; left: 193px; top: 547px;" class="ui blue inverted piled raised segment">
               <h4 class="ui header">IPK</h4>
-              <p style="font-size: 20px" id="ipk"></p>
+              <p style="font-size: 16px" id="ipk"></p>
             </div>
             <div style="width: 600px;height: auto; position: absolute; right: 50px; top: 380px;" class="ui red tetriary piled raised segment">
               <h3 class="ui header">Skripsi</h3>
@@ -257,13 +286,16 @@
             </div> -->
             <form method="get" action="ambildatawisuda" id="formdatawisuda">
                 <input type="text" name="no" id="next" style="display:none" value="{{$data->no}}">
-          <button type="submit" >Next </button>
+           <button id="button" class="ui inverted violet button" type="submit" >Selanjutnya</button>
           </form>
         </div>
 
 
         <script type="text/javascript" src="js/jquery.min.js" ></script>
         <script type="text/javascript" src="js/responsivevoice.js"></script>
+        <script src="../js/Semantic-UI-CSS-master/semantic.js"></script>
+        <script src="../js/Semantic-UI-CSS-master/components/transition.js"></script>
+
         <script>
         $('#formdatawisuda').on('submit',function(e){
           e.preventDefault();
@@ -281,11 +313,21 @@
            var  no = data.no;
            var judul = data.judul;
            var namano = nomor+no+spasi+nama+spasi+koma+judul;
+           var foto = data.foto_mahasiswa;
            if (data.nama == null){
-             $('#namawisudawan').val('Terima Kasih Andrea Christian dan Bagus Jati Kuncoro');
+             $('#namawisudawan').val('Terima Kasih Tim Puskom');
            }else {
                 $('#namawisudawan').val(namano);
            }
+           document.getElementById("foto").innerHTML ='<div class="bulat"><img src="' + foto +
+                            '" ></div>';
+               $('.icon')
+                  .transition({
+                                animation : 'pulse',
+                                reverse   : 'auto', // default setting
+                                interval  : 250
+                              })
+                            ;
 
            $('#next').val(data.no);
            $('#nama').text(data.nama);
@@ -309,10 +351,66 @@
         <script>
         $(document).ready(function(){
           $('#gspeech').on('click', function(){
-          var text = $('input[name="text"]').val();
-          responsiveVoice.speak("" + text +"","Indonesian Female");
+            var text = $('input[name="text"]').val();
+            responsiveVoice.speak("" + text +"","Indonesian Female");
+             
           });
-          });
+          $('.icon')
+                  .transition({
+                                animation : 'pulse',
+                                reverse   : 'auto', // default setting
+                                interval  : 250
+                              })
+                            ;
+          $('.inverted.segment')
+                      .transition({
+                        animation : 'pulse',
+                        reverse   : 'auto', // default setting
+                        interval  : 250
+                      })
+                    ;
+        });
+        // {
+            $("#button").click(function(){
+               $('.inverted.segment')
+                      .transition({
+                        animation : 'pulse',
+                        reverse   : 'true', // default setting
+                        interval  : 250
+                      })
+                    ; 
+                $('.tetriary.segment')
+                      .transition({
+                        animation : 'pulse',
+                        reverse   : 'true', // default setting
+                        interval  : 250
+                      })
+                    ; 
+                $('.nim')
+                      .transition({
+                        animation : 'pulse',
+                        reverse   : 'true', // default setting
+                        interval  : 200
+                      })
+                    ;
+                $('.nama')
+                      .transition({
+                        animation : 'pulse',
+                        reverse   : 'true', // default setting
+                        interval  : 200
+                      })
+                    ; 
+                $('#foto')
+                      .transition({
+                        animation : 'pulse',
+                        reverse   : 'true', // default setting
+                        interval  : 200
+                      })
+                    ;   
+            });
+        // }
+
+            
         </script>
     </body>
 </html>
