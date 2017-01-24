@@ -217,7 +217,7 @@
         <div id="header">
             <div class="judul">
                 <img src="images/untan.png" width="60px;"></br></br>
-                Wisudawan Universitas Tanjungpura Periode 2016/2017
+                Wisudawan Fakultas Teknik Wisuda Periode II Tahun Akademik 2016/2017
             </div>
         </div>
         <div id="foto">
@@ -252,19 +252,15 @@
             </div>
             <!-- <a style="position: absolute;top: 300px;right: 50px;" class="ui big red tag label">Cumlaude</a> -->
             <div style="position: absolute;top: 300px;right: 50px;" class="ui large tag labels">
-              <a class="ui teal label">
-                Lulus
-              </a>
-              <a class="ui red label">
-                Cumlaude
+              <a id="predikat" class="ui red label">
               </a>
             </div>
             <div style="width: 340px;height: auto; position: absolute; left: 55px; top: 293px;" class="ui teal inverted piled raised segment">
-              <h4 class="ui header">Fakultas</h4>
-              <p style="font-size: 16px" id="fakultas"></b></p>
+              <h4 class="ui header">Lama Masa Studi</h4>
+              <p style="font-size: 16px" id="wktstudi"></b></p>
             </div>
             <div style="width: 280px;height: auto; position: absolute; left: 115px; top: 420px;" class="ui green inverted piled raised segment">
-              <h4 class="ui header">Prodi dan Angkatan</h4>
+              <h4 class="ui header">Usia</h4>
               <p style="font-size: 16px" id="prodi"></p>
             </div>
             <div style="width: 200px;height: auto; position: absolute; left: 193px; top: 547px;" class="ui blue inverted piled raised segment">
@@ -311,11 +307,12 @@
            var koma = ",";
            var  nama = data.nama;
            var  no = data.no;
-           var judul = data.judul;
+           var judul = data.judul_voice;
+           var predikat = data.predikat;
            var namano = nomor+no+spasi+nama+spasi+koma+judul;
            var foto = data.foto_mahasiswa;
            if (data.nama == null){
-             $('#namawisudawan').val('Terima Kasih Tim Puskom');
+             $('#namawisudawan').val('Selamat kepada seluruh Wisudawan, semoga sukses dan membanggakan.');
            }else {
                 $('#namawisudawan').val(namano);
            }
@@ -333,9 +330,10 @@
            $('#nama').text(data.nama);
            $('#nim').text(data.nim);
            $('#ipk').text(data.ipk);
-           $('#fakultas').text(data.fakultas);
-           $('#prodi').text(data.prodi);
+           $('#wktstudi').text(data.masa_studi);
+           $('#prodi').text(data.usia_lulus);
            $('#judul').text(data.judul);
+           $('#predikat').text(data.predikat);
            var text = $('input[name="text"]').val();
            responsiveVoice.speak("" + text +"","Indonesian Female");
            console.log(data);
@@ -406,7 +404,13 @@
                         reverse   : 'true', // default setting
                         interval  : 200
                       })
-                    ;   
+                $('.skripsi')
+                      .transition({
+                        animation : 'pulse',
+                        reverse   : 'true', // default setting
+                        interval  : 200
+                      })
+                    ;     
             });
         // }
 
